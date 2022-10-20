@@ -9,10 +9,15 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "d3-shape": "^3.1.0",
     "expo": "~46.0.16",
     "expo-status-bar": "~1.4.0",
+    "popmotion": "^11.0.5",
+    "randomcolor": "^0.6.2",
     "react": "18.0.0",
-    "react-native": "0.69.6"
+    "react-native": "0.69.6",
+    "react-native-gesture-handler": "~2.5.0",
+    "react-native-svg": "12.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
