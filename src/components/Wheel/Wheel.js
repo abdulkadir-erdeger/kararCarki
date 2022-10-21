@@ -216,10 +216,10 @@ const Wheel = ({ options }) => {
     const deg = Math.abs(Math.round(x % oneTurn));
 
     if (x < 0) {
-      return Math.floor(deg / angleBySegment);
+      return Math.round(deg / angleBySegment);
     }
     return (
-      (numberOfSegments - Math.floor(deg / angleBySegment)) % numberOfSegments
+      (numberOfSegments - Math.round(deg / angleBySegment)) % numberOfSegments
     );
   };
 

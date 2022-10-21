@@ -12,7 +12,6 @@ export default function App() {
     "Chamber",
     "Kay/o",
     "Viper",
-    "Raze",
   ];
   const wheelOptions = {
     rewards: participants,
