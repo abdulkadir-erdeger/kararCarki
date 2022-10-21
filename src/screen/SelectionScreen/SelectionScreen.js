@@ -12,8 +12,10 @@ const SelectionScreen = () => {
   const [data, setData] = useState([1, 2]);
   const [sectionList, setSectionList] = useState([]);
 
-  const addSectionList = (item) => {
-    setSectionList([...sectionList, item]);
+  const addSectionList = (item, index) => {
+    let oldData = sectionList;
+    oldData[index] = item;
+    setSectionList(oldData);
   };
 
   const addSection = () => {
@@ -22,9 +24,19 @@ const SelectionScreen = () => {
 
   const deleteSection = (i) => {
     if (data.length > 2) {
-      setData([...data.filter((item) => data.indexOf(item) !== i)]);
+      let newData = data.filter((item) => item !== data[i]);
+      setData(newData);
+      //setData([...data.filter((item) => data.indexOf(item) !== i)]);
+      let newList = arrayRemove(sectionList, sectionList[i]);
+      setSectionList(newList);
     }
   };
+
+  function arrayRemove(arr, value) {
+    return arr.filter(function (ele) {
+      return ele != value;
+    });
+  }
 
   return (
     <ImageBackground
@@ -59,7 +71,7 @@ const SelectionScreen = () => {
               <SectionCard
                 dSection={() => deleteSection(index)}
                 onSection={(item) => {
-                  addSectionList(item);
+                  addSectionList(item, index);
                 }}
               />
             )}
