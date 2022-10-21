@@ -1,19 +1,31 @@
-import {
-  View,
-  Text,
-  ImageBackground,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import styles from "./SelectionScreen.styles";
 import { FlatList, TextInput } from "react-native-gesture-handler";
 import SectionCard from "../../components/SectionCard";
 import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from "@expo/vector-icons";
 
 const SelectionScreen = () => {
   const navigation = useNavigation();
   const [title, onChangeTitle] = useState("");
+  const [data, setData] = useState([1, 2]);
+  const [sectionList, setSectionList] = useState([]);
+
+  const addSectionList = (item) => {
+    setSectionList([...sectionList, item]);
+  };
+
+  const addSection = () => {
+    setData([...data, data[data.length - 1] + 1]);
+  };
+
+  const deleteSection = (i) => {
+    if (data.length > 2) {
+      setData([...data.filter((item) => data.indexOf(item) !== i)]);
+    }
+  };
+
   return (
     <ImageBackground
       source={require("../../../assets/background.png")}
@@ -41,12 +53,33 @@ const SelectionScreen = () => {
             </Text>
           </Text>
 
-          <FlatList data={[1, 1]} renderItem={({ item }) => <SectionCard />} />
+          <FlatList
+            data={data}
+            renderItem={({ item, index }) => (
+              <SectionCard
+                dSection={() => deleteSection(index)}
+                onSection={(item) => {
+                  addSectionList(item);
+                }}
+              />
+            )}
+            keyExtractor={(item, index) => index.toString()}
+            ListFooterComponent={() => (
+              <TouchableOpacity
+                onPress={() => addSection()}
+                style={styles.listIncrementButton}
+              >
+                <AntDesign name="plus" size={24} color="black" />
+              </TouchableOpacity>
+            )}
+          />
         </View>
       </View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Karar")}
+        onPress={() =>
+          navigation.navigate("Karar", { title: title, list: sectionList })
+        }
       >
         <Text style={styles.buttonTitle}>Hazır</Text>
       </TouchableOpacity>

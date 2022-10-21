@@ -48,4 +48,12 @@ export default StyleSheet.create({
     fontFamily: "TitanOne",
     fontSize: 20,
   },
+  listIncrementButton: {
+    marginTop: 5,
+    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 5,
+    borderRadius: 10,
+  },
 });

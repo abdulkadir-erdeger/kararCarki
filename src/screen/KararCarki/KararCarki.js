@@ -2,8 +2,10 @@ import { View, Text, ImageBackground } from "react-native";
 import React from "react";
 import styles from "./KararCarki.styles";
 import Wheel from "../../components/Wheel";
+import { useRoute } from "@react-navigation/native";
 
 const KararCarki = () => {
+  const route = useRoute();
   const participants = [
     "Reyna",
     "Jett",
@@ -15,7 +17,7 @@ const KararCarki = () => {
     "Viper",
   ];
   const wheelOptions = {
-    rewards: participants,
+    rewards: route.params.list,
     knobSize: 5,
     borderWidth: 5,
     borderColor: "#000",
@@ -31,6 +33,9 @@ const KararCarki = () => {
       style={styles.image}
     >
       <View style={styles.container}>
+        <Text numberOfLines={1} style={styles.title}>
+          {route.params.title}
+        </Text>
         <Wheel options={wheelOptions} />
       </View>
     </ImageBackground>
