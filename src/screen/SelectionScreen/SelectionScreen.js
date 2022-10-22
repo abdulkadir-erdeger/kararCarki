@@ -4,6 +4,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   TouchableHighlight,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./SelectionScreen.styles";
@@ -87,7 +88,9 @@ const SelectionScreen = () => {
       <TouchableHighlight
         style={styles.button}
         onPress={() =>
-          navigation.navigate("Karar", { title: title, list: sectionList })
+          sectionList.includes("")
+            ? Alert.alert("Seçenekleri boş geçmeyiniz.")
+            : navigation.navigate("Karar", { title: title, list: sectionList })
         }
       >
         <Text style={styles.buttonTitle}>Hazır</Text>
