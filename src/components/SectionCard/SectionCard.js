@@ -4,8 +4,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./SectionCard.styles";
 
-const SectionCard = ({ dSection, onSection }) => {
-  const [sectionText, onChangeSectionText] = useState("");
+const SectionCard = ({ dSection, onSection, setSectionText }) => {
+  const [sectionText, onChangeSectionText] = useState();
+  useEffect(() => {
+    onChangeSectionText(setSectionText);
+  }, [setSectionText]);
   const haydi = () => {
     onSection(sectionText);
   };

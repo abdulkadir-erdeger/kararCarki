@@ -9,8 +9,7 @@ import { AntDesign } from "@expo/vector-icons";
 const SelectionScreen = () => {
   const navigation = useNavigation();
   const [title, onChangeTitle] = useState("");
-  const [data, setData] = useState([1, 2]);
-  const [sectionList, setSectionList] = useState([]);
+  const [sectionList, setSectionList] = useState(["", ""]);
 
   const addSectionList = (item, index) => {
     let oldData = sectionList;
@@ -19,24 +18,15 @@ const SelectionScreen = () => {
   };
 
   const addSection = () => {
-    setData([...data, data[data.length - 1] + 1]);
+    setSectionList([...sectionList, ""]);
   };
 
   const deleteSection = (i) => {
-    if (data.length > 2) {
-      let newData = data.filter((item) => item !== data[i]);
-      setData(newData);
-      //setData([...data.filter((item) => data.indexOf(item) !== i)]);
-      let newList = arrayRemove(sectionList, sectionList[i]);
+    if (sectionList.length > 2) {
+      let newList = sectionList.filter((item, index) => index !== i);
       setSectionList(newList);
     }
   };
-
-  function arrayRemove(arr, value) {
-    return arr.filter(function (ele) {
-      return ele != value;
-    });
-  }
 
   return (
     <ImageBackground
@@ -66,13 +56,14 @@ const SelectionScreen = () => {
           </Text>
 
           <FlatList
-            data={data}
+            data={sectionList}
             renderItem={({ item, index }) => (
               <SectionCard
                 dSection={() => deleteSection(index)}
                 onSection={(item) => {
                   addSectionList(item, index);
                 }}
+                setSectionText={sectionList[index]}
               />
             )}
             keyExtractor={(item, index) => index.toString()}
