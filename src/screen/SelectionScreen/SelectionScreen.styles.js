@@ -4,7 +4,7 @@ const { height, width } = Dimensions.get("window");
 export default StyleSheet.create({
   image: { flex: 1 },
   container: {
-    flex: 1,
+    height: height * 0.79,
     alignItems: "center",
   },
   titleContainer: {
@@ -54,5 +54,6 @@ export default StyleSheet.create({
     justifyContent: "center",
     padding: 5,
     borderRadius: 10,
+    marginBottom: 90,
   },
 });
