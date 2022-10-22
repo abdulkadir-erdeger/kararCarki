@@ -278,7 +278,10 @@ const Wheel = ({ options }) => {
 
   const _renderWinner = () => {
     return (
-      <RNText style={{ fontSize: 32, position: "absolute", bottom: 20 }}>
+      <RNText
+        numberOfLines={1}
+        style={{ fontSize: 32, position: "absolute", bottom: 20 }}
+      >
         <RNText style={{ fontWeight: "bold", fontFamily: "TitanOne" }}>
           {" "}
           Kazanan :{" "}
