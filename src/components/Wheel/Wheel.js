@@ -278,8 +278,12 @@ const Wheel = ({ options }) => {
 
   const _renderWinner = () => {
     return (
-      <RNText style={{ fontSize: 32, position: "absolute", bottom: 10 }}>
-        Kazanan : {winner}
+      <RNText style={{ fontSize: 32, position: "absolute", bottom: 20 }}>
+        <RNText style={{ fontWeight: "bold", fontFamily: "TitanOne" }}>
+          {" "}
+          Kazanan :{" "}
+        </RNText>{" "}
+        {winner}
       </RNText>
     );
   };
@@ -301,6 +305,7 @@ const Wheel = ({ options }) => {
             setWinner(_wheelPaths[winnerIndex].value);
           } catch (error) {
             console.warn("Üzgünüm ufak bir sorun oldu tekrar deneyin.");
+            setWinner(true);
           }
         }
       });
