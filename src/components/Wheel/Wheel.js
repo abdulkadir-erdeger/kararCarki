@@ -3,7 +3,6 @@ import {
   Text as RNText,
   Dimensions,
   Animated,
-  StyleSheet,
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState, useRef } from "react";
@@ -16,6 +15,7 @@ import {
   GestureHandlerRootView,
   State,
 } from "react-native-gesture-handler";
+import styles from "./Wheel.styles";
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
@@ -297,7 +297,11 @@ const Wheel = ({ options }) => {
           const winnerIndex = _getWinnerIndex();
           setEnabled(true);
           setFinished(true);
-          setWinner(_wheelPaths[winnerIndex].value);
+          try {
+            setWinner(_wheelPaths[winnerIndex].value);
+          } catch (error) {
+            console.warn("Üzgünüm ufak bir sorun oldu tekrar deneyin.");
+          }
         }
       });
     }
@@ -327,11 +331,3 @@ const Wheel = ({ options }) => {
 };
 
 export default Wheel;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
