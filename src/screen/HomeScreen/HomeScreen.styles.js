@@ -30,6 +30,14 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
+    transform: [
+      {
+        translateX: -4,
+      },
+      {
+        translateY: 2,
+      },
+    ],
   },
   buttonImage: {
     width: width * 0.65,

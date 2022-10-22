@@ -1,4 +1,10 @@
-import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  TouchableHighlight,
+} from "react-native";
 import React, { useState } from "react";
 import styles from "./SelectionScreen.styles";
 import { FlatList, TextInput } from "react-native-gesture-handler";
@@ -78,14 +84,14 @@ const SelectionScreen = () => {
           />
         </View>
       </View>
-      <TouchableOpacity
+      <TouchableHighlight
         style={styles.button}
         onPress={() =>
           navigation.navigate("Karar", { title: title, list: sectionList })
         }
       >
         <Text style={styles.buttonTitle}>Hazır</Text>
-      </TouchableOpacity>
+      </TouchableHighlight>
     </ImageBackground>
   );
 };
