@@ -1,9 +1,10 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { Ionicons } from "@expo/vector-icons";
+import { StatusBar } from "expo-status-bar";
 
 import HomeScreen from "./screen/HomeScreen";
 import SelectionScreen from "./screen/SelectionScreen";
@@ -25,6 +26,7 @@ const Route = () => {
 
   return (
     <NavigationContainer>
+      <StatusBar style="light" backgroundColor={"#3449ab"} />
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
