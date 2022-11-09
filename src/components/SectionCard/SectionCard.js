@@ -21,7 +21,7 @@ const SectionCard = ({ dSection, onSection, setSectionText }) => {
         placeholder="Seçeneğinizi giriniz..."
         value={sectionText}
         onChangeText={onChangeSectionText}
-        onEndEditing={haydi}
+        onKeyPress={haydi}
       />
       <Ionicons
         style={styles.trashIcon}
